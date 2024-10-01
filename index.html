@@ -45,12 +45,19 @@
 
     <script>
         let clickCount = 0;
+        let isFirstClick = true; // Переменная для отслеживания первого нажатия
+
         const audio = document.getElementById('audioPlayer');
 
         function sendClick() {
             clickCount++;
             playAudio(); 
-            window.location.href = `uniwebview://param1?clik=${clickCount}`;
+
+            if (isFirstClick) {
+                isFirstClick = false; 
+                playAudio(); 
+                window.location.href = `uniwebview://param1?clik=${clickCount}`;
+            }
         }
 
         function c() {
