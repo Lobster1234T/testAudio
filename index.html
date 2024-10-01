@@ -34,8 +34,8 @@
 <body>
     <div class="container">
         <h1>Clicker Demo</h1>
-        <p>Нажмите на кнопку, чтобы включить аудио и начать кликер:</p>
-        <button onclick="handleClick()">Начать</button>
+        <p>Нажмите на кнопку, чтобы увеличить количество кликов и воспроизвести аудио:</p>
+        <button onclick="handleClick()">Клик</button>
         <p id="audio-info"></p> <!-- Информация о длительности аудио -->
     </div>
 
@@ -43,36 +43,25 @@
         let clickCount = 0;
         let audioPlayed = false;
 
-        // Создаём аудио объект
         const audio = new Audio('https://krutov89bk.online/kolibelnie/stories/12.The Lion, The Mouse and The Sleepy Bear.mp3');
-
+        
         function handleClick() {
             clickCount++;
             window.location.href = `uniwebview://Click?count=${clickCount}`;
-            
-            // Если аудио ещё не воспроизводилось, запускаем его
-            if (!audioPlayed) {
-                audio.play().then(() => {
-                    audioPlayed = true;
 
-                    // Получаем и отправляем длительность аудио в Unity через UniWebView
-                    audio.onloadedmetadata = function() {
-                        const duration = audio.duration;
-                        document.getElementById("audio-info").textContent = "Длительность аудио: " + duration.toFixed(2) + " секунд";
-                        
-                        // Отправляем длительность в Unity
-                        window.location.href = `uniwebview://AudioDuration?duration=${duration.toFixed(2)}`;
-                    };
-                }).catch(error => {
-                    console.error("Ошибка воспроизведения аудио:", error);
-                    document.getElementById("audio-info").textContent = "Нажмите на кнопку, чтобы разрешить воспроизведение аудио.";
-                });
+            if(audioPlayed == false)
+            {
+                audio.play();
+                audioPlayed = true;
             }
         }
+        
 
         function updateClickCount(count) {
             clickCount = count;
+            window.location.href = `uniwebview://AudioDuration?duration=${audio.duration}`;
             console.log("Количество кликов обновлено на веб-странице: " + clickCount);
+            console.log("duration: " + duration);
         }
     </script>
 </body>
