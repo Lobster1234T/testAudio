@@ -3,64 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Demo</title>
+    <title>Audio Player</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        html, body {
+            height: 100%;
             margin: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 0;
+            overflow: hidden;
             cursor: pointer;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #218838;
+            background-color: rgba(0, 0, 0, 0);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Clicker Demo</h1>
-        <p>Нажмите на кнопку, чтобы увеличить количество кликов и воспроизвести аудио:</p>
-        <button onclick="handleClick()">Клик</button>
-        <p id="audio-info"></p> <!-- Информация о длительности аудио -->
-    </div>
+    <audio id="audioPlayer">
+        <source id="audioSource" src="https://krutov89bk.online/kolibelnie/stories/20.Sneaky%20Hyena%20and%20the%20Teachers'%20Day%20Camp.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
-        let clickCount = 0;
-        let audioPlayed = false;
+        const audio = document.getElementById('audioPlayer');
 
-        const audio = new Audio('https://krutov89bk.online/kolibelnie/stories/12.The Lion, The Mouse and The Sleepy Bear.mp3');
-        
-        function handleClick() {
-            clickCount++;
-            window.location.href = `uniwebview://Click?count=${clickCount}`;
-
-            if(audioPlayed == false)
-            {
-                audio.play();
-                audioPlayed = true;
+        function playPauseAudio() {
+            if (audio.paused) {
+                playAudio();
+            } else {
+                pauseAudio();
             }
         }
-        
 
-        function updateClickCount() {
-            window.location.href = `uniwebview://AudioDuration?duration=${audio.duration}`;
+        function playAudio() {
+            audio.play();
+            window.location.href = `uniwebview://audio?state=1`; // Воспроизведение
+            window.location.href = `uniwebview://audio?duration=${audio.duration}`;
         }
-        
+
+        function pauseAudio() {
+            audio.pause();
+            window.location.href = `uniwebview://audio?state=0`; // Пауза
+            window.location.href = `uniwebview://audio?currentTime=${audio.currentTime}`;
+        }
+
+        function seekForward() {
+            if (audio.duration > 0) {
+                audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
+                sendSeekInfo();
+            }
+        }
+
+        function seekBackward() {
+            if (audio.duration > 0) {
+                audio.currentTime = Math.max(audio.currentTime - 15, 0);
+                sendSeekInfo();
+            }
+        }
+
+        function getDuration() {
+            window.location.href = `uniwebview://audio?dd=${audio.duration}`;
+        }
+
+        function getCurrentTime() {
+            window.location.href = `uniwebview://audio?cc=${audio.currentTime}`;
+        }
+
+        document.addEventListener('click', playPauseAudio);
     </script>
 </body>
 </html>
