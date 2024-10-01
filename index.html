@@ -34,13 +34,11 @@
         function playAudio() {
             audio.play();
             window.location.href = `uniwebview://audio?state=1`; // Воспроизведение
-            window.location.href = `uniwebview://audio?duration=${audio.duration}`;
         }
 
         function pauseAudio() {
             audio.pause();
             window.location.href = `uniwebview://audio?state=0`; // Пауза
-            window.location.href = `uniwebview://audio?currentTime=${audio.currentTime}`;
         }
 
         function seekForward() {
