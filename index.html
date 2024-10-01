@@ -62,11 +62,24 @@
             }
         }
 
-        function updateAudioInfo() {
-            const currentTime = audio.currentTime;
-            const duration    = audio.duration;
-            window.location.href = `uniwebview://param1?cc=${currentTime}&dd=${duration}`;
-        }
+function updateAudioInfo() {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+
+    // Форматируем текущее время и продолжительность в минутах и секундах
+    const currentMinutes = Math.floor(currentTime / 60);
+    const currentSeconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+
+    const durationMinutes = Math.floor(duration / 60);
+    const durationSeconds = Math.floor(duration % 60).toString().padStart(2, '0');
+
+    // Формат времени ММ:СС
+    const formattedCurrentTime = `${currentMinutes}:${currentSeconds}`;
+    const formattedDuration = `${durationMinutes}:${durationSeconds}`;
+
+    window.location.href = `uniwebview://param1?cc=${formattedCurrentTime}&dd=${formattedDuration}`;
+}
+
 
         function playAudio() {
             audio.play();
