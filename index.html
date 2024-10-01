@@ -56,9 +56,9 @@
         
         function getCurrentTime() {
             const audioPlayer = document.getElementById('audioPlayer');
-            window.location.href = `uniwebview://param2?cc=${audioPlayer.getCurrentTime}`;
+            window.location.href = `uniwebview://param2?cc=${audioPlayer.currentTime}`;
         }
-    
+
         function playAudio() {
             const audioPlayer = document.getElementById('audioPlayer');
             audioPlayer.play();
