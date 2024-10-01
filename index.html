@@ -61,6 +61,12 @@
             window.location.href = `uniwebview://param2?dd=${audio.duration}`;
         }
 
+        function updateAudioInfo() {
+            const currentTime = audio.currentTime;
+            const duration    = audio.duration;
+            window.location.href = `uniwebview://param1?cc=${currentTime}&dd=${duration}`;
+        }
+
         function playAudio() {
             audio.play();
             window.location.href = `uniwebview://audioManager?state=1`;
