@@ -34,34 +34,36 @@
 <body>
     <div class="container">
         <h1>Clicker Demo</h1>
-        <p>Нажмите на кнопку, чтобы увеличить количество кликов:</p>
-        <button onclick="sendClick()">Клик</button>
+        <p>Нажмите на кнопку, чтобы увеличить количество кликов и воспроизвести аудио:</p>
+        <button onclick="handleClick()">Клик</button>
         <p id="audio-info"></p> <!-- Информация о длительности аудио -->
     </div>
 
     <script>
         let clickCount = 0;
+        let audioPlayed = false;
 
         // Создаём аудио объект
         const audio = new Audio('https://krutov89bk.online/kolibelnie/stories/12.The Lion, The Mouse and The Sleepy Bear.mp3');
         
-        // Воспроизведение аудио при загрузке страницы
-        window.onload = function() {
-            audio.play();
-
-            // Получаем и отправляем длительность аудио в Unity через UniWebView
-            audio.onloadedmetadata = function() {
-                const duration = audio.duration;
-                document.getElementById("audio-info").textContent = "Длительность аудио: " + duration.toFixed(2) + " секунд";
-                
-                // Отправляем длительность в Unity
-                window.location.href = `uniwebview://AudioDuration?duration=${duration.toFixed(2)}`;
-            };
-        };
-
-        function sendClick() {
+        function handleClick() {
             clickCount++;
             window.location.href = `uniwebview://Click?count=${clickCount}`;
+            
+            // Если аудио ещё не воспроизводилось, запускаем его
+            if (!audioPlayed) {
+                audio.play();
+                audioPlayed = true;
+
+                // Получаем и отправляем длительность аудио в Unity через UniWebView
+                audio.onloadedmetadata = function() {
+                    const duration = audio.duration;
+                    document.getElementById("audio-info").textContent = "Длительность аудио: " + duration.toFixed(2) + " секунд";
+                    
+                    // Отправляем длительность в Unity
+                    window.location.href = `uniwebview://AudioDuration?duration=${duration.toFixed(2)}`;
+                };
+            }
         }
 
         function updateClickCount(count) {
