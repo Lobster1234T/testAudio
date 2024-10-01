@@ -49,6 +49,7 @@
 
         function sendClick() {
             clickCount++;
+            audio.play();
         }
 
         function PlayPause() {
@@ -61,14 +62,6 @@
             }
         }
 
-        function c() {
-            window.location.href = `uniwebview://param1?cc=${audio.currentTime}`;
-        }
-
-        function d() {
-            window.location.href = `uniwebview://param2?dd=${audio.duration}`;
-        }
-
         function updateAudioInfo() {
             const currentTime = audio.currentTime;
             const duration    = audio.duration;
@@ -78,7 +71,6 @@
         function playAudio() {
             audio.play();
             window.location.href = `uniwebview://audioManager?state=1`;
-            
         }
 
         function stopAudio() {
