@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,10 +43,14 @@
 
         function sendClick() {
             clickCount++;
-            // Отправляем количество кликов в Unity через схему uniwebview
+
             window.location.href = `uniwebview://update-click-count?count=${clickCount}`;
         }
 
+        function updateClickCount(count) {
+            clickCount = count;
+            console.log("Количество кликов обновлено на веб-странице: " + clickCount);
+        }
     </script>
 </body>
 </html>
