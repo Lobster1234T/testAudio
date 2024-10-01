@@ -12,7 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
+            background-color: #b10000;
         }
         .container {
             text-align: center;
@@ -21,13 +21,13 @@
             padding: 10px 20px;
             font-size: 18px;
             cursor: pointer;
-            background-color: #28a745;
+            background-color: #6e28a7;
             color: white;
             border: none;
             border-radius: 5px;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #ff7300;
         }
     </style>
 </head>
@@ -45,15 +45,12 @@
         function sendClick() {
             clickCount++;
 
-            window.location.href = `uniwebview://click?count=${clickCount}`;
+            window.location.href = `uniwebview://param1?clik=${clickCount}`;
         }
 
         function updateClickCount(count) {
             clickCount = count;
-        }
-
-        function getVariable(){
-            window.location.href = `uniwebview://sdk?cc=${(Math.random() * 200 - 100).toFixed(2)}`;
+            window.location.href = `uniwebview://param1?clik=${clickCount}`;
         }
 
     </script>
