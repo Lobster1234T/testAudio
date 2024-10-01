@@ -39,8 +39,13 @@
         <button onclick="sendClick()">Клик</button>
     </div>
 
+    <audio id="audioPlayer" controls>
+        <source id="audioSource" src="https://krutov89bk.online/kolibelnie/stories/20.Sneaky%20Hyena%20and%20the%20Teachers'%20Day%20Camp.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         let clickCount = 0;
+        const audio = document.getElementById('audioPlayer');
 
         function sendClick() {
             clickCount++;
@@ -48,10 +53,11 @@
             window.location.href = `uniwebview://param1?clik=${clickCount}`;
         }
 
-        function updateClickCount(count) {
-            clickCount = count;
-            window.location.href = `uniwebview://param1?clik=${clickCount}`;
+        function getCurrentTime() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            window.location.href = `uniwebview://param2?cc=${audioPlayer.currentTime}`;
         }
+    
 
     </script>
 </body>
