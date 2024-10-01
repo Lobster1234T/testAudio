@@ -52,10 +52,11 @@
 
             window.location.href = `uniwebview://param1?clik=${clickCount}`;
         }
-
+        
+        let ert;
         function getCurrentTime() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            window.location.href = `uniwebview://param2?cc=${audioPlayer.currentTime}`;
+            ert++;
+            window.location.href = `uniwebview://param2?cc=${ert}`;
         }
     
         function playAudio() {
