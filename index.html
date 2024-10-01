@@ -44,7 +44,9 @@
     </audio>
 
     <script>
+        const audioPlayer = document.getElementById('audioPlayer');
         let clickCount = 0;
+
         const audio = document.getElementById('audioPlayer');
 
         function sendClick() {
@@ -55,14 +57,26 @@
 
         
         function getCurrentTime() {
-            const audioPlayer = document.getElementById('audioPlayer');
-            window.location.href = `uniwebview://param2?cc=${audioPlayer.currentTime}`;
+            window.location.href = `uniwebview://param1?cc=${audioPlayer.currentTime}`;
+        }
+
+        function getTotalTime() {
+            window.location.href = `uniwebview://param2?dd=${audioPlayer.duration}`;
         }
 
         function playAudio() {
-            const audioPlayer = document.getElementById('audioPlayer');
             audioPlayer.play();
+            window.location.href = `uniwebview://audio?state=1`;
         }
+
+        function stopAudio() {
+            audioPlayer.stopAudio();
+            window.location.href = `uniwebview://audio?state=0`;
+
+        }
+
+
+
     </script>
 </body>
 </html>
