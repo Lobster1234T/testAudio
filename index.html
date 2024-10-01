@@ -49,14 +49,14 @@
 
         function sendClick() {
             clickCount++;
-
+            playAudio(); 
             window.location.href = `uniwebview://param1?clik=${clickCount}`;
         }
 
-        let ert = 0;
+        
         function getCurrentTime() {
-            ert++;
-            window.location.href = `uniwebview://param2?cc=${ert}`;
+            const audioPlayer = document.getElementById('audioPlayer');
+            window.location.href = `uniwebview://param2?cc=${audioPlayer.getCurrentTime}`;
         }
     
         function playAudio() {
