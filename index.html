@@ -3,41 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio Player</title>
+    <title>Clicker Demo</title>
     <style>
-        html, body {
-            height: 100%;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
             cursor: pointer;
-            background-color: rgba(25, 55, 55, 255);
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
-
 <body>
+    <div class="container">
+        <h1>Clicker Demo</h1>
+        <p>Нажмите на кнопку, чтобы увеличить количество кликов:</p>
+        
+        <button onclick="sendClick()">Клик</button>
+    </div>
+
     <script>
-        const audio = document.getElementById('audioPlayer');
+        let clickCount = 0;
 
+        function sendClick() {
+            clickCount++;
 
-
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min; // Генерация случайного числа в диапазоне [min, max]
+            window.location.href = `uniwebview://Click?count=${clickCount}`;
         }
 
-        function get100() {
-            let randomValue = getRandomInt(1, 100); // Генерация случайного числа от 1 до 100
-            window.location.href = `uniwebview://test?gg=${randomValue}`;
+        function updateClickCount(count) {
+            clickCount = count;
         }
 
-        function get300() {
-            let randomValue = getRandomInt(1, 300); // Генерация случайного числа от 1 до 300
-            window.location.href = `uniwebview://test?dd=${randomValue}`;
-        }
-
-
-        document.addEventListener('click', playPauseAudio);
     </script>
 </body>
 </html>
