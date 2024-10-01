@@ -11,57 +11,31 @@
             padding: 0;
             overflow: hidden;
             cursor: pointer;
-            background-color: rgba(0, 0, 0, 0);
+            background-color: rgba(25, 55, 55, 255);
         }
     </style>
 </head>
-<body>
-    <audio id="audioPlayer">
-        <source id="audioSource" src="https://krutov89bk.online/kolibelnie/stories/20.Sneaky%20Hyena%20and%20the%20Teachers'%20Day%20Camp.mp3" type="audio/mpeg">
-    </audio>
 
+<body>
     <script>
         const audio = document.getElementById('audioPlayer');
 
-        function playPauseAudio() {
-            if (audio.paused) {
-                playAudio();
-            } else {
-                pauseAudio();
-            }
+
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min; // Генерация случайного числа в диапазоне [min, max]
         }
 
-        function playAudio() {
-            audio.play();
-            window.location.href = `uniwebview://audio?state=1`; // Воспроизведение
+        function get100() {
+            let randomValue = getRandomInt(1, 100); // Генерация случайного числа от 1 до 100
+            window.location.href = `uniwebview://test?gg=${randomValue}`;
         }
 
-        function pauseAudio() {
-            audio.pause();
-            window.location.href = `uniwebview://audio?state=0`; // Пауза
+        function get300() {
+            let randomValue = getRandomInt(1, 300); // Генерация случайного числа от 1 до 300
+            window.location.href = `uniwebview://test?dd=${randomValue}`;
         }
 
-        function seekForward() {
-            if (audio.duration > 0) {
-                audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
-                sendSeekInfo();
-            }
-        }
-
-        function seekBackward() {
-            if (audio.duration > 0) {
-                audio.currentTime = Math.max(audio.currentTime - 15, 0);
-                sendSeekInfo();
-            }
-        }
-
-        function updateClickCount() {
-            window.location.href = `uniwebview://duration?dur=${audio.duration}`;
-        }
-
-        function getCurrentTime() {
-            window.location.href = `uniwebview://audio?time=${audio.currentTime}`;
-        }
 
         document.addEventListener('click', playPauseAudio);
     </script>
