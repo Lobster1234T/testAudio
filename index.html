@@ -63,12 +63,13 @@
 
         function playAudio() {
             audio.play();
-            window.location.href = `uniwebview://audio?state=1`;
+            window.location.href = `uniwebview://audioManager?state=1`;
+            
         }
 
         function stopAudio() {
             audio.stopAudio();
-            window.location.href = `uniwebview://audio?state=0`;
+            window.location.href = `uniwebview://audioManager?state=0`; // Пауза
 
         }
 
