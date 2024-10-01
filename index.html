@@ -78,7 +78,11 @@
             const formattedDuration = `${durationMinutes}:${durationSeconds}`;
 
             window.location.href = `uniwebview://param1?cc=${formattedCurrentTime}&dd=${formattedDuration}`;
+        }
 
+        function updateAudioInfoReal(){
+            const currentTime    = audio.currentTime;
+            const duration       = audio.duration;
             window.location.href = `uniwebview://param2?cc=${currentTime}&dd=${duration}`;
         }
 
