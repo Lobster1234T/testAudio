@@ -40,7 +40,6 @@
 
         function sendClick() {
             audio.play();
-            window.location.href = `uniwebview://audioManager?state=1`; // Воспроизведение
             hideFunc();
         }
 
@@ -96,7 +95,7 @@
         function loadAudio(audioUrl) {
             const audioSource = document.getElementById('audioSource');
             audioSource.src = audioUrl; 
-            stopAudio();
+            
         }
         
         function hideFunc(){
