@@ -44,7 +44,7 @@
     </audio>
 
     <script>
-        let   clickCount = 0;
+        let clickCount = 0;
         const audio = document.getElementById('audioPlayer');
 
         function sendClick() {
@@ -54,17 +54,17 @@
 
         function PlayPause() {
             if (audio.paused) {
-             audio.play();
+                audio.play();
                 window.location.href = `uniwebview://audioManager?state=1`; // Воспроизведение
             } else {
-             audio.pause(); // Остановка
+                audio.pause(); // Остановка
                 window.location.href = `uniwebview://audioManager?state=0`; // Пауза
             }
         }
 
         function updateAudioInfo() {
-            const currentTime    = audio.currentTime;
-            const duration       = audio.duration;
+            const currentTime = audio.currentTime;
+            const duration = audio.duration;
             window.location.href = `uniwebview://param1?cc=${currentTime}&dd=${duration}`;
         }
 
@@ -74,9 +74,8 @@
         }
 
         function stopAudio() {
-            audio.stopAudio();
+            audio.pause(); // Остановка
             window.location.href = `uniwebview://audioManager?state=0`; // Пауза
-
         }
 
         function seekForward() {
@@ -89,6 +88,18 @@
             if (audio.duration > 0) {
                 audio.currentTime = Math.max(audio.currentTime - 15, 0);
             }
+        }
+
+
+        function setAudio(audioUrl) {
+            const audioSource = document.getElementById('audioSource');
+            audioSource.src = audioUrl; 
+            audio.load(); 
+        }
+
+ 
+        function setAudioPosition(position) {
+            audio.currentTime = position; 
         }
 
 
