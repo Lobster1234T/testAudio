@@ -75,6 +75,7 @@
 
         function stopAudio() {
             audio.pause(); // Остановка
+            audio.currentTime = 0; // Сброс аудио в начало
             window.location.href = `uniwebview://audioManager?state=0`; // Пауза
         }
 
@@ -90,14 +91,12 @@
             }
         }
 
-
         function setAudio(audioUrl) {
             const audioSource = document.getElementById('audioSource');
             audioSource.src = audioUrl; 
             audio.load(); 
         }
 
- 
         function setAudioPosition(position) {
             audio.currentTime = position; 
         }
@@ -105,8 +104,8 @@
         function loadAudio(audioUrl) {
             const audioSource = document.getElementById('audioSource');
             audioSource.src = audioUrl; 
-            audio.currentTime = 0; // Сбрасываем аудио к началу
-            stopAudio();
+            audio.load(); // Загружаем новое аудио
+            audio.play(); // Автоматически воспроизводим новое аудио
         }
 
     </script>
