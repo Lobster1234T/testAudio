@@ -12,12 +12,19 @@
             overflow: hidden; 
             cursor: pointer; 
             background-color: rgba(0, 0, 0, 0); /* Прозрачный фон */
+            user-select: none; /* Отключаем выделение текста */
+            -webkit-tap-highlight-color: transparent; /* Убираем выделение на мобильных устройствах */
         }
 
         audio {
             opacity: 0; /* Прозрачный аудиоплеер */
             width: 0; /* Уменьшаем размер, чтобы не занимал место */
             height: 0;
+        }
+        
+        /* Отключаем фокусировку для всех элементов */
+        *:focus {
+            outline: none;
         }
     </style>
 </head>
@@ -99,7 +106,8 @@
         function UnhideFunc(){
             window.location.href = `uniwebview://hider?hider=1`; // Пауза
         }
-        document.addEventListener('click', playPauseAudio);
+        document.addEventListener('click', PlayPause);
+
     </script>
 </body>
 </html>
