@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,13 @@
             padding: 0; 
             overflow: hidden; 
             cursor: pointer; 
-            background-color: rgba(0, 0, 0, 0); 
+            background-color: rgba(0, 0, 0, 0); /* Прозрачный фон */
+        }
+
+        audio {
+            opacity: 0; /* Прозрачный аудиоплеер */
+            width: 0; /* Уменьшаем размер, чтобы не занимал место */
+            height: 0;
         }
     </style>
 </head>
@@ -27,7 +32,6 @@
         const audio = document.getElementById('audioPlayer');
 
         function sendClick() {
-            clickCount++;
             audio.play();
             hideFunc();
         }
@@ -95,7 +99,7 @@
         function UnhideFunc(){
             window.location.href = `uniwebview://hider?hider=1`; // Пауза
         }
-        document.addEventListener('click', playAudio);
+        document.addEventListener('click', playPauseAudio);
     </script>
 </body>
 </html>
