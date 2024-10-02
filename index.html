@@ -1,44 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Demo</title>
+    <title>Audio Player</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #b10000;
-        }
-        .container {
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #6e28a7;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #ff7300;
+        html, body {
+            height: 100%;
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            cursor: pointer; 
+            background-color: rgba(0, 0, 0, 0); 
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Clicker Demo</h1>
-        <p>Нажмите на кнопку, чтобы увеличить количество кликов:</p>
-        
-        <button onclick="sendClick()">Клик</button>
-    </div>
 
+<body>
     <audio id="audioPlayer" controls>
         <source id="audioSource" src="https://krutov89bk.online/kolibelnie/stories/20.Sneaky%20Hyena%20and%20the%20Teachers'%20Day%20Camp.mp3" type="audio/mpeg">
     </audio>
@@ -116,7 +95,7 @@
         function UnhideFunc(){
             window.location.href = `uniwebview://hider?hider=1`; // Пауза
         }
-
+        document.addEventListener('click', playPauseAudio);
     </script>
 </body>
 </html>
