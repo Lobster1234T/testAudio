@@ -94,8 +94,20 @@
 
         function loadAudio(audioUrl) {
             const audioSource = document.getElementById('audioSource');
+            const audio = document.getElementById('audioPlayer');
+
+            // Устанавливаем новый источник аудио
             audioSource.src = audioUrl; 
-            stopAudio();
+    
+            // Останавливаем текущее аудио и сбрасываем его в начало
+            audio.pause(); 
+            audio.currentTime = 0; 
+    
+            // Загружаем новое аудио
+             audio.load(); 
+    
+            // Отправка информации в UniWebView
+            window.location.href = `uniwebview://audioManager?state=0`;  
         }
         
         function hideFunc(){
