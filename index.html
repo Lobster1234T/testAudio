@@ -50,6 +50,7 @@
         function sendClick() {
             clickCount++;
             audio.play();
+            hideFunc();
         }
 
         function PlayPause() {
@@ -106,6 +107,14 @@
             audioSource.src = audioUrl; 
             audio.load(); // Загружаем новое аудио
             audio.play(); // Автоматически воспроизводим новое аудио
+        }
+        
+        function hideFunc(){
+            window.location.href = `uniwebview://hider?hider=0`; // Пауза
+        }
+
+        function UnhideFunc(){
+            window.location.href = `uniwebview://hider?hider=1`; // Пауза
         }
 
     </script>
